@@ -8,8 +8,10 @@ import time
 
 # Threshold when we decide the core temperature is hot (degrees Celsius)
 HOT_THRESHOLD = 65
+# Time to wait to measure next temperature (seconds)
+WAIT_TIME = 1
 # How often we check the core temperature (seconds)
-SLEEP_INTERVAL = 60
+SLEEP_INTERVAL = 10
 
 def getTemperature():
     
@@ -30,14 +32,23 @@ def getTemperature():
 if __name__ == '__main__':
 
     while True:
-        # Obtain core temperature in degrees Celsius
-        coreTemperature = getTemperature()
+        # Measure core temperature every 1 second 
+        integratedTemperature = 0
+        count = 0
+        tStart = time.time()
+        while time.time() - tStart < SLEEP_INTERVAL:
+            integratedTemperature += getTemperature()
+            count += 1
+            time.sleep(WAIT_TIME)
+            
+        # Mean core temperature over the SLEEP_INTERVAL
+        coreTemperature = round(integratedTemperature / count, 1)
         
         # If the core gets too hot, warn the user
         if coreTemperature > HOT_THRESHOLD:
-            print "Core temperature = " + str(coreTemperature) + "C"
+            print("WARNING: Core temperature = " + str(coreTemperature) + "C")
         else:
-            print "core is chillen at " + str(coreTemperature) + "C"
+            print("Core is chillin' at " + str(coreTemperature) + "C")
 
         # Wait 1 minute and check core temperature again
         time.sleep(SLEEP_INTERVAL)
