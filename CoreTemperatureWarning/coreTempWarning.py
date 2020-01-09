@@ -11,7 +11,7 @@ HOT_THRESHOLD = 65
 # Time to wait to measure next temperature (seconds)
 WAIT_TIME = 1
 # How often we check the core temperature (seconds)
-SLEEP_INTERVAL = 10
+SLEEP_INTERVAL = 60
 
 def getTemperature():
     
@@ -30,6 +30,14 @@ def getTemperature():
 
 
 if __name__ == '__main__':
+
+    # Print instantaneous core temperature at first pass
+    # If the core gets too hot, warn the user
+    coreTemperature = getTemperature()
+    if coreTemperature > HOT_THRESHOLD:
+        print("WARNING: Core temperature = " + str(coreTemperature) + "C")
+    else:
+        print("Core is chillin' at " + str(coreTemperature) + "C")
 
     while True:
         # Measure core temperature every 1 second 
