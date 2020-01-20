@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
     # Print instantaneous core temperature at first pass
     # If the core gets too hot, warn the user
-    coreTemperature = getTemperature()
+    coreTemperature = round(getTemperature(), 1)
     if coreTemperature > HOT_THRESHOLD:
         print("WARNING: Core temperature = " + str(coreTemperature) + "C")
     else:
