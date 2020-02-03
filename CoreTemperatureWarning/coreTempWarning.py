@@ -16,7 +16,7 @@ SLEEP_INTERVAL = 60
 def getTemperature():
     
     # Run a shell script to extract the CPU temperature
-    os.system("sh coreTemp.sh")
+    os.system("sh /home/pi/Documents/Coding/raspberry-pi-programming/CoreTemperatureWarning/coreTemp.sh")
 
     # Extract CPU temperature from file
     fo = open("sysTemp")
