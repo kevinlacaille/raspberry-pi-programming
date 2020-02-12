@@ -7,7 +7,7 @@ import os
 import time
 
 # Threshold when we decide the core temperature is hot (degrees Celsius)
-HOT_THRESHOLD = 65
+HOT_THRESHOLD = 60
 # Time to wait to measure next temperature (seconds)
 WAIT_TIME = 1
 # How often we check the core temperature (seconds)
@@ -35,7 +35,7 @@ if __name__ == '__main__':
     # If the core gets too hot, warn the user
     coreTemperature = round(getTemperature(), 1)
     if coreTemperature > HOT_THRESHOLD:
-        print("WARNING: Core temperature = " + str(coreTemperature) + "C")
+        print("WARNING: Core is getting toast! Temperature = " + str(coreTemperature) + "C")
     else:
         print("Core is chillin' at " + str(coreTemperature) + "C")
 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
         
         # If the core gets too hot, warn the user
         if coreTemperature > HOT_THRESHOLD:
-            print("WARNING: Core temperature = " + str(coreTemperature) + "C")
+            print("WARNING: Core is getting toasty! Temperature = " + str(coreTemperature) + "C")
         else:
             print("Core is chillin' at " + str(coreTemperature) + "C")
 
