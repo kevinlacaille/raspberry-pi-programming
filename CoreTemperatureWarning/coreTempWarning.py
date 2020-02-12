@@ -35,7 +35,7 @@ if __name__ == '__main__':
     # If the core gets too hot, warn the user
     coreTemperature = round(getTemperature(), 1)
     if coreTemperature > HOT_THRESHOLD:
-        print("WARNING: Core is getting toast! Temperature = " + str(coreTemperature) + "C")
+        print("WARNING: Core is getting toasty! Temperature = " + str(coreTemperature) + "C")
     else:
         print("Core is chillin' at " + str(coreTemperature) + "C")
 
