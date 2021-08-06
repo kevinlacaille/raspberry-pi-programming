@@ -12,7 +12,6 @@ def send_email(user, password, recipient, subject, message):
     sender_email = user #"kevinlacaille@gmail.com"
     sender_password = password
     # sender_password = getpass.getpass("Type your password and press enter: ")
-    #sender_password = "lacaille"
 
     # More SMS gateways here: https://www.comparecellular.ca/text-messaging/
     sms_gateway_kevin = '9028029718@msg.telus.com'
